@@ -4,11 +4,89 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IA sem viés | Uso consciente e antirracista da Inteligência Artificial</title>
-<meta name="description" content="Um projeto de pesquisa sobre como a Inteligência Artificial pode reproduzir racismo — e como usá-la de forma responsável.">
+<meta name="description" content="Como a Inteligência Artificial pode reproduzir racismo — e como usá-la de forma responsável.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<style>
+:root{
+  --ink:#0A0E14;
+  --paper:#F6F7F9;
+  --navy:#152A4E;
+  --line:#DDE1E8;
+  --font-serif:'Fraunces',Georgia,serif;
+  --font-sans:'Inter',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; font-family:var(--font-sans); color:var(--ink); background:var(--paper); line-height:1.7; font-size:16px;}
+h1,h2,h3{font-family:var(--font-serif); font-weight:500; color:var(--ink); line-height:1.25; margin:0 0 16px;}
+p{margin:0 0 16px; line-height:1.7;}
+a{color:inherit; text-decoration:none;}
+::selection{background:var(--navy); color:var(--paper);}
+:focus-visible{outline:2px solid var(--navy); outline-offset:3px;}
+
+.wrap{max-width:1152px; margin:0 auto; padding:0 24px;}
+
+.header{position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(246,247,249,.9); backdrop-filter:blur(6px);}
+.header__inner{display:flex; align-items:center; justify-content:space-between; padding:20px 24px;}
+.logo{font-family:var(--font-serif); font-size:18px;}
+.nav{display:none; gap:32px; font-size:14px; color:rgba(10,14,20,.7);}
+.nav a:hover{color:var(--ink);}
+@media(min-width:640px){.nav{display:flex;}}
+
+.hero{padding:100px 0 120px;}
+@media(min-width:640px){.hero{padding:140px 0 160px;}}
+.hero__grid{display:grid; row-gap:48px; column-gap:40px;}
+@media(min-width:640px){.hero__grid{grid-template-columns:repeat(12,1fr);}}
+.hero__title{grid-column:span 12;}
+@media(min-width:640px){.hero__title{grid-column:span 8;}}
+.hero h1{font-size:36px; line-height:1.2; margin:0;}
+@media(min-width:640px){.hero h1{font-size:56px; line-height:1.15;}}
+.hero__side{grid-column:span 12; display:flex; flex-direction:column; justify-content:flex-end; gap:28px;}
+@media(min-width:640px){.hero__side{grid-column:span 4;}}
+.hero__side p{color:rgba(10,14,20,.7); margin:0;}
+.hero__links{display:flex; flex-wrap:wrap; gap:24px;}
+.link-accent{font-size:14px; color:var(--navy); border-bottom:1px solid var(--navy); padding-bottom:2px;}
+.link-accent:hover{color:var(--ink); border-color:var(--ink);}
+
+.section{padding:96px 0;}
+@media(min-width:640px){.section{padding:140px 0;}}
+.section--dark{background:var(--ink); color:var(--paper); border-top:1px solid var(--line);}
+.section--dark h2{color:var(--paper);}
+.section--tint{background:rgba(21,42,78,.05); border-top:1px solid var(--line);}
+
+.grid-12{display:grid; row-gap:56px; column-gap:40px;}
+@media(min-width:640px){.grid-12{grid-template-columns:repeat(12,1fr);}}
+.col-4{grid-column:span 12;}
+@media(min-width:640px){.col-4{grid-column:span 4;}}
+.col-7{grid-column:span 12;}
+@media(min-width:640px){.col-7{grid-column:span 7;} .col-start-6{grid-column-start:6;}}
+
+.muted{color:rgba(10,14,20,.6); margin:16px 0 0;}
+h2{font-size:30px;}
+
+.prose{max-width:68ch; display:flex; flex-direction:column; gap:24px; color:rgba(10,14,20,.75);}
+.prose p{margin:0;}
+.prose--light{color:rgba(246,247,249,.8);}
+
+.stack-cards{display:flex; flex-direction:column; gap:40px;}
+.card-line{border-top:1px solid var(--line); padding-top:28px;}
+.card-line h3{font-size:20px; margin:0 0 12px;}
+.card-line p{color:rgba(10,14,20,.7); margin:0;}
+
+.stack-points{display:flex; flex-direction:column; gap:28px; max-width:68ch;}
+.point{display:flex; gap:16px;}
+.dot{width:8px; height:8px; border-radius:50%; background:var(--navy); margin-top:8px; flex-shrink:0;}
+.point p{color:rgba(10,14,20,.8); margin:0;}
+
+.footer{border-top:1px solid var(--line); padding:40px 0; font-size:14px; color:rgba(10,14,20,.5);}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+}
+</style>
 </head>
 <body>
 
@@ -19,23 +97,19 @@
       <a href="#problema">O problema</a>
       <a href="#mecanismos">Como acontece</a>
       <a href="#pratica">Uso consciente</a>
-      <a href="#projeto">O projeto</a>
     </nav>
-    <a href="#importar" class="btn btn--outline">Importar projeto</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap hero__grid">
     <div class="hero__title">
-      <p class="eyebrow">Mostra Científica 2026</p>
       <h1>A inteligência artificial aprende com a gente. Inclusive com nossos preconceitos.</h1>
     </div>
     <div class="hero__side">
-      <p>Uma pesquisa sobre como algoritmos de IA podem reproduzir e amplificar o racismo — e o que fazer para usar essas ferramentas de forma responsável.</p>
+      <p>Como algoritmos de IA podem reproduzir e amplificar o racismo — e o que fazer para usar essas ferramentas de forma responsável.</p>
       <div class="hero__links">
         <a href="#problema" class="link-accent">Entender o problema</a>
-        <a href="#importar" class="link-muted">Ver o projeto completo</a>
       </div>
     </div>
   </div>
@@ -90,92 +164,11 @@
   </div>
 </section>
 
-<section id="importar" class="section">
-  <div class="wrap grid-12">
-    <div class="col-4">
-      <h2>Traga sua pesquisa</h2>
-      <p class="muted">Vincule o documento oficial do projeto a esta página para que visitantes possam consultá-lo.</p>
-    </div>
-    <div class="col-7 col-start-6">
-      <div id="dropzone" class="dropzone">
-        <p class="dropzone__title">Importar projeto</p>
-        <p class="dropzone__hint">Envie o documento da pesquisa (PDF ou DOCX), ou cole o link do Google Drive.</p>
-
-        <button type="button" id="browseBtn" class="filepick">
-          <span id="fileLabel">Arraste um arquivo ou clique para selecionar</span>
-          <span class="filepick__tag">Procurar</span>
-        </button>
-        <input type="file" id="fileInput" accept=".pdf,.doc,.docx" hidden>
-
-        <div class="divider"><span></span>ou<span></span></div>
-
-        <form id="linkForm" class="link-form">
-          <input type="url" id="linkInput" placeholder="Cole o link do Google Drive" required>
-          <button type="submit" class="btn btn--dark">Vincular</button>
-        </form>
-
-        <p id="feedback" class="feedback" hidden></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--border-top">
-  <div class="wrap grid-12">
-    <div class="col-4">
-      <h2>Onde os arquivos aparecem</h2>
-      <p class="muted">Tudo que for importado na seção "Traga sua pesquisa" fica organizado aqui, disponível para consulta.</p>
-    </div>
-    <div class="col-7 col-start-6">
-      <div class="folder">
-        <div class="folder__head">
-          <p class="folder__title">Materiais do projeto</p>
-          <span class="muted small" id="fileCount">2 arquivos</span>
-        </div>
-        <ul id="fileList" class="folder__list">
-          <li class="folder__item">
-            <div class="folder__info">
-              <span class="chip">DOC</span>
-              <div>
-                <p class="file-name">Inteligência Artificial e Diversidade.docx</p>
-                <p class="muted small">1.2 MB · 10 set 2026</p>
-              </div>
-            </div>
-            <a href="assets/projeto.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--tiny">Abrir</a>
-          </li>
-          <li class="folder__item">
-            <div class="folder__info">
-              <span class="chip">PDF</span>
-              <div>
-                <p class="file-name">Roteiro de apresentação.pdf</p>
-                <p class="muted small">340 KB · 10 set 2026</p>
-              </div>
-            </div>
-            <a href="assets/roteiro.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--tiny">Abrir</a>
-          </li>
-        </ul>
-        <p class="folder__note">Coloque seus arquivos em <code>assets/</code> — eles ficam acessíveis em <code>assets/nome-do-arquivo.pdf</code>.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projeto" class="section section--border-top">
-  <div class="wrap grid-12">
-    <div class="col-4">
-      <h2>Sobre a pesquisa</h2>
-    </div>
-    <div class="col-7 col-start-6 prose">
-      <p>Este site faz parte de um projeto apresentado na Mostra Científica da Rede Estadual de Educação do RS, no eixo temático dos 55 anos do 20 de Novembro. A proposta nasceu de uma pergunta simples: se a IA está em toda parte, quem garante que ela trate todo mundo com igualdade?</p>
-      <p>Desenvolvido pela turma 111 da Escola Estadual de Ensino Médio Otávio Caruso Brochado da Rocha, Ijuí — RS.</p>
-    </div>
-  </div>
-</section>
-
 <footer class="footer">
-  <div class="wrap">Mostra Científica 2026 — Uso consciente e antirracista da IA</div>
+  <div class="wrap">IA sem viés</div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+</script>
 </body>
 </html>
